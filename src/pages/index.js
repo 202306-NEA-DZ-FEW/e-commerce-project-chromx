@@ -1,7 +1,9 @@
 import Banner from "@/components/Banner"
 import Container from "@/components/layouts/Container"
+import { fetchAllProducts } from "@/utils/API"
 
-export default function Home() {
+export default function Home({ products }) {
+  console.log(products)
   return (
     <main>
       <Banner />
@@ -10,4 +12,15 @@ export default function Home() {
       </Container>
     </main>
   )
+}
+
+export async function getStaticProps() {
+  //fetchAllProducts(query = "", limit = 4, skip = 0)
+  const data = await fetchAllProducts("", 8, 0)
+  const products = await data.products
+  return {
+    props: {
+      products,
+    },
+  }
 }
