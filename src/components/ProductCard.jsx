@@ -44,13 +44,15 @@ function ProductCard({ product }) {
           SVGstyle={{ display: "inline-block", width: "25px" }}
         />
 
-        <div className="card-actions justify-between items-center">
-          <h3 className="text-2xl font-bold text-success">
-            <FormattedPrice amount={finalPrice} />
-          </h3>
-          <p className="text-sm line-through inline text-error">
-            <FormattedPrice amount={originalPrice} />
-          </p>
+        <div className="card-actions justify-between items-end">
+          <div>
+            <p className="text-sm line-through inline text-error">
+              <FormattedPrice amount={originalPrice} />
+            </p>
+            <h3 className="text-2xl font-bold text-success">
+              <FormattedPrice amount={finalPrice} />
+            </h3>
+          </div>
           <button className="btn btn-sm btn-square btn-ghost">
             <BiCartAdd className="text-2xl" />
           </button>
