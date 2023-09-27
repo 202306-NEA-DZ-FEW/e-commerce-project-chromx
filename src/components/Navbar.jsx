@@ -9,32 +9,21 @@ function Navbar() {
 
   return (
     <div className="navbar sticky top-0 z-20 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
-      <div className="md:flex-1">
+      <div className="flex-1">
         <Link href="/" className="btn btn-ghost font-black text-xl normal-case">
           Chromx.
         </Link>
       </div>
-      <div className="dropdown flex-1">
-        <label tabIndex={0} className="btn btn-small btn-ghost">
-          Category <HiChevronDown className="text-xl" />
-        </label>
-        <ul
-          tabIndex={0}
-          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-full max-h-[500px] overflow-y-hidden"
-        >
-          {categories.map((cat) => (
-            <li key={cat}>
-              <Link
-                href={{
-                  pathname: "/products",
-                  query: { category: cat },
-                }}
-              >
-                {cat}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div class="items-stretch hidden lg:flex">
+        <Link href="/" class="btn btn-ghost btn-sm rounded-btn">
+          Home
+        </Link>
+        <Link href="/products" class="btn btn-ghost btn-sm rounded-btn">
+          Products
+        </Link>
+        <Link href="/about" class="btn btn-ghost btn-sm rounded-btn">
+          About
+        </Link>
       </div>
       <div className="flex-none">
         <div className="dropdown dropdown-end mx-2">
