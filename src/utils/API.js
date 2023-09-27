@@ -1,11 +1,22 @@
 const BASE_URL = "https://dummyjson.com/products"
 
-export const fetchAllProducts = async (query = "", limit = 4, skip = 0) => {
-  const response = await fetch(
-    `${BASE_URL}/search?q=${query}&limit=${limit}&skip=${skip}`,
-  )
-  const data = await response.json()
-  return data
+export const fetchAllProducts = async (
+  category = undefined,
+  query = "",
+  limit = 4,
+  skip = 0,
+) => {
+  if (category) {
+    const response = await fetch(`${BASE_URL}/category/${category}`)
+    const data = await response.json()
+    return data
+  } else {
+    const response = await fetch(
+      `${BASE_URL}/search?q=${query}&limit=${limit}&skip=${skip}`,
+    )
+    const data = await response.json()
+    return data
+  }
 }
 
 export const categories = [
