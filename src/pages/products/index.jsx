@@ -1,10 +1,6 @@
-// import Category from "@/components/filters/Category"
-// import PriceRange from "@/components/PriceRange"
-import ProductCard from "@/components/ProductCard"
+import ProductCard from "@/components/Products/ProductCard"
 import FiltersNav from "@/components/filters/FilterNav"
 import Search from "@/components/filters/Search"
-// import RatingSelect from "@/components/RatingSelect"
-
 import Container from "@/components/layouts/Container"
 import { fetchAllProducts } from "@/utils/API"
 import Link from "next/link"
@@ -49,7 +45,7 @@ function Products({
       >
         Next
       </Link>
-      <main className="grid lg:grid-cols-12">
+      <main className="grid lg:grid-cols-12 my-20">
         <Search queryParams={queryParams} />
         <FiltersNav queryParams={queryParams} />
         <section className="flex flex-wrap gap-4 items-center justify-center col-span-10">

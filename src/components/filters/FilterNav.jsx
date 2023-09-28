@@ -1,11 +1,9 @@
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-
 import { useDebounce } from "use-debounce"
-
 import PriceRange from "./PriceRange"
-import Category from "./Category"
 import RatingSelect from "./RatingSelect"
+import Category from "./Category"
 
 function FiltersNav({ queryParams }) {
   const router = useRouter()

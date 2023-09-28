@@ -32,6 +32,12 @@ export const fetchAllProducts = async (
   }
 }
 
+export const fetchProduct = async (id) => {
+  const res = await fetch(`${BASE_URL}/${id}`)
+  const data = await res.json()
+  return data
+}
+
 export const categories = [
   "smartphones",
   "laptops",

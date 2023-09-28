@@ -47,8 +47,8 @@ const Banner = () => {
               src={banner.imageUrl}
               alt="bannerone"
               className="w-full h-full relative object-cover"
-              priority
               fill
+              priority
             />
             <BannerText title={banner.title} subtitle={banner.description} />
           </div>

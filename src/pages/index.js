@@ -1,5 +1,5 @@
 import Banner from "@/components/Banner"
-import ProductCard from "@/components/ProductCard"
+import ProductCard from "@/components/Products/ProductCard"
 import Container from "@/components/layouts/Container"
 import { fetchAllProducts } from "@/utils/API"
 
