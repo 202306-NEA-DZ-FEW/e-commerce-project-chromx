@@ -1,15 +1,25 @@
 //library imports
 import Image from "next/image"
 import { Rating } from "react-simple-star-rating"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BiMinus, BiPlus } from "react-icons/bi"
+import { auth, onAddToCart } from "@/utils/firebase"
+import { useAuthState } from "react-firebase-hooks/auth"
+
+//component imports
 import FormattedPrice from "./FormattedPrice"
 
 function ProductDetails({ product }) {
+  const [user, loading] = useAuthState(auth)
   const [imageUrl, setImageUrl] = useState(product.thumbnail)
   const [selectedImg, setSelectedImg] = useState(product.thumbnail)
   const [inStock, setInStock] = useState(product.stock)
   const [quantity, setQuantity] = useState(0)
+
+  //calculate price and discount
+  const originalPrice = product.price
+  const discountPercentage = product.discountPercentage
+  const finalPrice = originalPrice - originalPrice * (discountPercentage / 100)
 
   function handleIncrement() {
     if (quantity === product.stock) return
@@ -22,15 +32,17 @@ function ProductDetails({ product }) {
     setInStock((prev) => prev + 1)
   }
 
-  //calculate price and discount
-  const originalPrice = product.price
-  const discountPercentage = product.discountPercentage
-  const finalPrice = originalPrice - originalPrice * (discountPercentage / 100)
-
   const setImgPreview = (url) => {
     setImageUrl(url)
     setSelectedImg(url)
   }
+
+  useEffect(() => {
+    setImageUrl(product.thumbnail)
+    setSelectedImg(product.thumbnail)
+    setInStock(product.stock)
+    setQuantity(0)
+  }, [product])
 
   return (
     <div className="card lg:card-side bg-white shadow-xl w-[80%] mx-auto mt-20 ">
@@ -124,7 +136,12 @@ function ProductDetails({ product }) {
             </span>
           </h3>
 
-          <button className="btn btn-sm btn-neutral">Add to cart</button>
+          <button
+            onClick={() => onAddToCart(user, product, quantity)}
+            className="btn btn-sm btn-neutral"
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
