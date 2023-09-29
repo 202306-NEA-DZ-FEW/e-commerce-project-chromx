@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app"
 import { getAuth } from "firebase/auth"
-import { getFirestore } from "firebase/firestore"
+import { deleteDoc, getDoc, getFirestore } from "firebase/firestore"
 import { toast } from "react-toastify"
 
 import {
@@ -31,20 +31,23 @@ export const db = getFirestore(app)
 
 // helper functions
 export async function onAddToCart(user, product, qty) {
+  // check for user
   if (!user) {
     toast.error("You need to login first😡", {
-      position: toast.POSITION.TOP_CENTER,
+      position: toast.POSITION.BOTTOM_LEFT,
       autoClose: 1500,
     })
     return
   }
+  // check for valid quantity
   if (qty === 0) {
     toast.error("Add one of quantity at least!😥", {
-      position: toast.POSITION.TOP_CENTER,
+      position: toast.POSITION.BOTTOM_LEFT,
       autoClose: 1500,
     })
     return
   }
+  // check for existing item
   const collectionRef = collection(db, "cartItems")
   const q = query(
     collectionRef,
@@ -54,6 +57,7 @@ export async function onAddToCart(user, product, qty) {
 
   const querySnapshot = await getDocs(q)
 
+  // update item
   if (!querySnapshot.empty) {
     const cartItemDoc = querySnapshot.docs[0]
     const currentQuantity = cartItemDoc.data().quantity
@@ -65,11 +69,13 @@ export async function onAddToCart(user, product, qty) {
     toast.success(
       `You Added ${updatedQuantity} items of that product so far! 🤑`,
       {
-        position: toast.POSITION.TOP_CENTER,
+        position: toast.POSITION.BOTTOM_LEFT,
         autoClose: 1500,
       },
     )
-  } else {
+  }
+  // add item
+  else {
     await addDoc(collectionRef, {
       ...product,
       quantity: qty,
@@ -79,8 +85,44 @@ export async function onAddToCart(user, product, qty) {
       username: user.displayName,
     })
     toast.success("Your product has been added successfully 👌", {
-      position: toast.POSITION.TOP_CENTER,
+      position: toast.POSITION.BOTTOM_LEFT,
       autoClose: 1500,
     })
+  }
+}
+
+export async function updateProduct(product, qty) {
+  try {
+    // Assuming you have the user ID and document ID
+    const docRef = doc(db, "cartItems", `${product.id}`)
+    const docSnapshot = await getDoc(docRef)
+    if (docSnapshot.exists()) {
+      await updateDoc(docRef, {
+        quantity: qty,
+        timestamp: serverTimestamp(),
+      })
+      console.log("Cart item updated successfully")
+    } else {
+      console.log("Document does not exist.")
+    }
+  } catch (error) {
+    console.error("Error updating cart item:", error)
+  }
+}
+
+export async function deleteProduct(itemId) {
+  try {
+    const docRef = doc(db, "cartItems", itemId)
+    await deleteDoc(docRef)
+    toast.success("Item deleted successfully 👌", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 1500,
+    })
+  } catch (error) {
+    toast.error("Error deleting item!😖", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 1500,
+    })
+    console.error("Error deleting item:", error)
   }
 }
