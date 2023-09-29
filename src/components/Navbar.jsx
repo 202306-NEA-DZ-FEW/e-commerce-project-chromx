@@ -8,7 +8,14 @@ import { collection, onSnapshot, query, where } from "firebase/firestore"
 function Navbar() {
   const [user, setUser] = useState(null)
   const [cartItems, setCartItems] = useState([])
-  const total = 0
+
+  const subTotal = cartItems.reduce(
+    (total, item) =>
+      total +
+      (item.price - item.price * (item.discountPercentage / 100)) *
+        item.quantity,
+    0,
+  )
 
   const getData = () => {
     if (!user) return
@@ -79,11 +86,15 @@ function Navbar() {
             >
               <div className="card-body">
                 <span className="font-bold text-lg">
-                  {cartItems ? cartItems.lenght : 0}
+                  {cartItems?.length} Items
                 </span>
-                <span className="text-info">Subtotal: {total}</span>
+                <span className="text-info">Subtotal: {subTotal}</span>
                 <div className="card-actions">
-                  <Link href="/cart" className="btn btn-primary btn-block">
+                  <Link
+                    // onClick={handleGoToCart}
+                    href="/cart"
+                    className="btn btn-neutral btn-block"
+                  >
                     View cart
                   </Link>
                 </div>
