@@ -5,7 +5,8 @@ export const fetchAllProducts = async (
   query = "",
   limit = 4,
   skip = 0,
-  price = 0,
+  minPrice = 0,
+  MaxPrice = 0,
   rating = 0,
 ) => {
   if (category) {
@@ -14,7 +15,13 @@ export const fetchAllProducts = async (
     //filter the products in the category
     const filtredProducts = await data.products
       .filter((p) => p.title.toLowerCase().includes(query.toLowerCase()))
-      .filter((p) => (price ? p.price <= price : true))
+      .filter((p) => (minPrice ? p.price >= minPrice : true))
+      .filter((p) => (MaxPrice ? p.price <= MaxPrice : true))
+      .filter((p) =>
+        minPrice && MaxPrice
+          ? p.price >= minPrice && p.price <= MaxPrice
+          : true,
+      )
       .filter((p) => (rating ? p.rating >= rating : true))
 
     return { data, products: filtredProducts }
@@ -24,7 +31,13 @@ export const fetchAllProducts = async (
     )
     const data = await response.json()
     const filtredProducts = await data.products
-      .filter((p) => (price ? p.price <= price : true))
+      .filter((p) => (minPrice ? p.price >= minPrice : true))
+      .filter((p) => (MaxPrice ? p.price <= MaxPrice : true))
+      .filter((p) =>
+        minPrice && MaxPrice
+          ? p.price >= minPrice && p.price <= MaxPrice
+          : true,
+      )
       .filter((p) => (rating ? p.rating >= rating : true))
 
     // const products = await data.products
