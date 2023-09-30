@@ -1,8 +1,9 @@
 import Link from "next/link"
 import CartItem from "./CartItem"
 import { BsChevronLeft } from "react-icons/bs"
+import { resetCart } from "@/utils/firebase"
 
-function CartItemsList({ cartItems }) {
+function CartItemsList({ cartItems, user }) {
   return (
     <section className="flex flex-col gap-3">
       {!cartItems.length && (
@@ -20,6 +21,16 @@ function CartItemsList({ cartItems }) {
       {cartItems.map((item) => (
         <CartItem key={item.id} item={item} />
       ))}
+      {cartItems.length ? (
+        <div className="self-end">
+          <button
+            onClick={() => resetCart(user.uid)}
+            className="btn btn-error btn-sm text-white"
+          >
+            Reset cart
+          </button>
+        </div>
+      ) : null}
     </section>
   )
 }
