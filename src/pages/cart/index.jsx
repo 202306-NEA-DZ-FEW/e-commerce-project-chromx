@@ -1,3 +1,4 @@
+import CartCheckoutCard from "@/components/CartComponent/CartCheckoutCard"
 import CartItemsList from "@/components/CartComponent/CartItemsList"
 import Container from "@/components/layouts/Container"
 import { auth, db } from "@/utils/firebase"
@@ -39,9 +40,11 @@ function CartPage() {
   return (
     <main className="my-10 min-h-screen">
       <Container>
-        {loading && <p>loading...</p>}
-        {cartItems && <CartItemsList cartItems={cartItems} />}
-        {cartItems.length ? <p>subtotal: {subTotal}</p> : null}
+        <div className="flex flex-col gap-8">
+          {loading && <p>loading...</p>}
+          {cartItems && <CartItemsList cartItems={cartItems} user={user} />}
+          {cartItems.length ? <CartCheckoutCard subTotal={subTotal} /> : null}
+        </div>
       </Container>
     </main>
   )

@@ -30,6 +30,7 @@ export const auth = getAuth()
 export const db = getFirestore(app)
 
 // helper functions
+// Add product to cart
 export async function onAddToCart(user, product, qty) {
   // check for user
   if (!user) {
@@ -91,6 +92,7 @@ export async function onAddToCart(user, product, qty) {
   }
 }
 
+// update product quantity in the cart
 export async function updateProduct(product, qty) {
   try {
     // Assuming you have the user ID and document ID
@@ -110,6 +112,7 @@ export async function updateProduct(product, qty) {
   }
 }
 
+// delete single product from cart
 export async function deleteProduct(itemId) {
   try {
     const docRef = doc(db, "cartItems", itemId)
@@ -120,6 +123,30 @@ export async function deleteProduct(itemId) {
     })
   } catch (error) {
     toast.error("Error deleting item!😖", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 1500,
+    })
+    console.error("Error deleting item:", error)
+  }
+}
+
+// delete All product from cart
+export async function resetCart(userId) {
+  try {
+    const collectionRef = collection(db, "cartItems")
+    const q = query(collectionRef, where("user", "==", userId))
+    const querySnapshot = await getDocs(q)
+
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref)
+    })
+    toast.success("Item deleted successfully 👌", {
+      position: toast.POSITION.BOTTOM_LEFT,
+      autoClose: 1500,
+    })
+    console.log("All cart items deleted successfully for user:", userId)
+  } catch (error) {
+    toast.error("Error deleting cart items!😖", {
       position: toast.POSITION.BOTTOM_LEFT,
       autoClose: 1500,
     })
