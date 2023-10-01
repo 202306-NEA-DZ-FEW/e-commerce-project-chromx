@@ -5,6 +5,7 @@ import { BiCartAdd } from "react-icons/bi"
 import { Rating } from "react-simple-star-rating"
 import { auth, onAddToCart } from "@/utils/firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
+import { motion } from "framer-motion"
 
 //component imports
 import FormattedPrice from "./FormattedPrice"
@@ -16,7 +17,12 @@ function ProductCard({ product }) {
   const finalPrice = originalPrice - originalPrice * (discountPercentage / 100)
 
   return (
-    <div className="card card-compact bg-white shadow-sm md:max-w-70 w-60 group">
+    <motion.div
+      initial={{ y: 30, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="card card-compact bg-white shadow-sm md:max-w-70 w-60 group"
+    >
       {/* ========== card head ========== */}
       <Link href={"/products/" + product.id}>
         <figure className="w-full h-[220px] rounded-2xl relative">
@@ -64,7 +70,7 @@ function ProductCard({ product }) {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
