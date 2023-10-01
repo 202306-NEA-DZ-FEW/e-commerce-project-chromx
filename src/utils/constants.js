@@ -81,3 +81,40 @@ export const bannerData = [
     imageUrl: banner_10,
   },
 ]
+
+export const menSection = {
+  id: 1,
+  heading: "Fashion for All",
+  imageUrl:
+    "https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80",
+  title: "Men's Fashion",
+  description:
+    "Discover the latest trends in men's fashion. From classic suits to casual streetwear, we have everything you need to upgrade your wardrobe.",
+  buttonLabel: "Shop Now",
+  lft: false,
+  link: "/products?category=mens-shoes",
+}
+export const womenSection = {
+  id: 2,
+  heading: "Elevate Your Style",
+  imageUrl:
+    "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80",
+  title: "Women's Fashion",
+  description:
+    "Elevate your style with our stunning collection of women's fashion. Whether it's elegant dresses or everyday essentials, we've got you covered.",
+  buttonLabel: "Shop Now",
+  lft: true,
+  link: "/products?category=womens-dresses",
+}
+export const electronicsSection = {
+  id: 3,
+  heading: "Explore the Future",
+  imageUrl:
+    "https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1802&q=80",
+  title: "Electronics",
+  description:
+    "Explore our cutting-edge electronics selection. From smartphones to smart home devices, we offer the latest in technology for your needs.",
+  buttonLabel: "Shop Now",
+  lft: false,
+  link: "/products?category=laptops",
+}

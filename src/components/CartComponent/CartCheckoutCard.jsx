@@ -1,9 +1,15 @@
+import { motion } from "framer-motion"
 import FormattedPrice from "../Products/FormattedPrice"
 
 function CartCheckoutCard({ subTotal }) {
   const Shipping = 10
   return (
-    <div className="bg-white flex flex-col justify-between gap-4 rounded-xl p-4">
+    <motion.div
+      initial={{ y: 30, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 3 }}
+      className="bg-white flex flex-col justify-between gap-4 rounded-xl p-4"
+    >
       <h1 className="text-3xl font-bold mb-8">Cart Total</h1>
       <div className="flex items-center gap-3 flex-1 border-b-2 border-neutral">
         <h3 className="text-2xl font-medium flex-1 ">Subtotal</h3>
@@ -28,7 +34,7 @@ function CartCheckoutCard({ subTotal }) {
           continue to checkout
         </button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

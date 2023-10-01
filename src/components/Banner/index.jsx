@@ -53,37 +53,6 @@ const Banner = () => {
             <BannerText title={banner.title} subtitle={banner.description} />
           </div>
         ))}
-        {/* <div className="w-full h-[560px] relative">
-          <Image
-            src={banner_1}
-            alt="bannerone"
-            className="w-full h-full relative object-cover"
-            priority
-            fill
-          />
-          <BannerText
-            title="Outware Picks"
-            subtitle="dsajdlasjdlasjd djasldjalsd"
-          />
-        </div> */}
-        {/* <div className="w-full h-[560px] relative">
-          <Image
-            src={banner_2}
-            alt="bannertwo"
-            className="w-full h-full relative object-cover"
-            fill
-          />
-          <BannerText title="Seasonal Offers" />
-        </div>
-        <div className="w-full h-[560px] relative">
-          <Image
-            src={banner_3}
-            alt="bannerthree"
-            className="w-full h-full relative object-cover"
-            fill
-          />
-          <BannerText title="Best for all" />
-        </div> */}
       </Slider>
     </div>
   )

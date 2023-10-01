@@ -5,6 +5,7 @@ import { BiMinus, BiPlus } from "react-icons/bi"
 import { FiTrash2 } from "react-icons/fi"
 import FormattedPrice from "../Products/FormattedPrice"
 import { deleteProduct, updateProduct } from "@/utils/firebase"
+import { motion } from "framer-motion"
 import { toast } from "react-toastify"
 
 function CartItem({ item }) {
@@ -34,7 +35,12 @@ function CartItem({ item }) {
   }
 
   return (
-    <div className="bg-white flex justify-between items-center rounded-xl p-4">
+    <motion.div
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className="bg-white flex justify-between items-center rounded-xl p-4"
+    >
       <div className="flex items-center gap-3 flex-1">
         <div className="avatar">
           <div className="w-16 rounded-xl">
@@ -77,7 +83,7 @@ function CartItem({ item }) {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 export default CartItem
