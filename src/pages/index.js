@@ -24,7 +24,7 @@ export default function Home({ products }) {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.2 }}
-            className="text-center my-4 md:my-8"
+            className="text-center my-4 md:my-12"
           >
             <h1 className="text-4xl font-bold">Products</h1>
             <p className="card-body">

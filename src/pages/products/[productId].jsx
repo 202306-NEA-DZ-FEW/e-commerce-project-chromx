@@ -36,8 +36,8 @@ export async function getStaticPaths() {
   }
 }
 
+//SSG
 export async function getStaticProps({ params }) {
-  // const { productId } = context.query
   const product = await fetchProduct(params.productId)
   if (!product) {
     return { notFound: true }
@@ -52,19 +52,3 @@ export async function getStaticProps({ params }) {
     },
   }
 }
-// export async function getServerSideProps(context) {
-//   const { productId } = context.query
-//   const product = await fetchProduct(productId)
-//   if (!product) {
-//     return { notFound: true }
-//   }
-//   const category = product.category || ""
-//   const { products } = await fetchAllProducts(category)
-//   return {
-//     props: {
-//       product,
-//       similarProducts: products,
-//       category,
-//     },
-//   }
-// }
