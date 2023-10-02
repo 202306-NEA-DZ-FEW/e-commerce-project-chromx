@@ -6,7 +6,7 @@ import { resetCart } from "@/utils/firebase"
 function CartItemsList({ cartItems, user }) {
   return (
     <section className="flex flex-col gap-3">
-      {!cartItems.length && (
+      {!cartItems.length && user && (
         <div className="text-center my-4">
           <h1 className="text-4xl font-bold">Your cart is empty</h1>
           <p>
