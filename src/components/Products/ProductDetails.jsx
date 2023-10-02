@@ -46,9 +46,9 @@ function ProductDetails({ product }) {
 
   return (
     <div className="card lg:card-side bg-white shadow-xl w-[80%] mx-auto mt-20 ">
-      <figure className="xl:h-[520px] lg:h-[580px] h-80 lg:w-[50%] w-full relative ">
+      <figure className="lg:h-[580px] h-80 lg:w-[50%] w-full relative ">
         <Image
-          className="w-full h-full object-cover lg:rounded-2xl"
+          className="w-full h-full lg:rounded-2xl object-cover"
           src={imageUrl}
           alt="image"
           fill

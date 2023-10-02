@@ -39,21 +39,31 @@ const Banner = () => {
     prevArrow: <NextArrow />,
   }
   return (
-    <div className="overflow-hidden relative text-white">
-      <Slider {...settings}>
-        {bannerData.map((banner) => (
-          <div key={banner.id} className="w-full h-[560px] relative">
-            <Image
-              src={banner.imageUrl}
-              alt="bannerone"
-              className="w-full h-full relative object-cover"
-              fill
-              priority
-            />
-            <BannerText title={banner.title} subtitle={banner.description} />
-          </div>
-        ))}
-      </Slider>
+    <div className="relative lg:h-[100vh] h-[560px]">
+      <section className="absolute top-0 w-full">
+        <div className="overflow-hidden relative text-white">
+          <Slider {...settings}>
+            {bannerData.map((banner) => (
+              <div
+                key={banner.id}
+                className="w-full lg:h-[100vh] h-[560px] relative"
+              >
+                <Image
+                  src={banner.imageUrl}
+                  alt="bannerone"
+                  className="w-full h-full relative object-cover"
+                  fill
+                  priority
+                />
+                <BannerText
+                  title={banner.title}
+                  subtitle={banner.description}
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </section>
     </div>
   )
 }
