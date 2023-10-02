@@ -1,5 +1,5 @@
 import Container from "@/components/layouts/Container"
-import { fetchAllProducts, fetchProduct } from "@/utils/API"
+import { BASE_URL, fetchAllProducts, fetchProduct } from "@/utils/API"
 import ProductDetails from "@/components/Products/ProductDetails"
 import SimilarProductsList from "@/components/Products/SimilarProductsList"
 import Head from "next/head"
@@ -26,9 +26,20 @@ function ProductDetailsPage({ product, similarProducts, category }) {
 
 export default ProductDetailsPage
 
-export async function getServerSideProps(context) {
-  const { productId } = context.query
-  const product = await fetchProduct(productId)
+export async function getStaticPaths() {
+  const res = await fetch(`${BASE_URL}?limit=0&skip=0`)
+  const data = await res.json()
+
+  return {
+    paths: data.products.map((product) => ({
+      params: { productId: product.id.toString() },
+    })),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const product = await fetchProduct(params.productId)
   const category = product.category
   const { products } = await fetchAllProducts(category)
   return {
