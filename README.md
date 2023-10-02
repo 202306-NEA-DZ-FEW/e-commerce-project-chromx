@@ -1,16 +1,14 @@
 # ChromX: E-Commerce Project
 
 ## Introduction
+
 ChromX E-commerce project is a project designed to showcase the usage of various technologies and tools for building a modern web application. Below, you'll find important information and instructions for running and understanding this project.
 
 ## Project Overview
 
-
-ChromX is deployed in Vercel via the following link: 
+ChromX is deployed in Vercel via the following link:
 
 ## ![Home page desktop](public/assets/screen0.jpg)
-
-
 
 It features three main pages:
 
@@ -19,19 +17,19 @@ Products: Showing individual product details.
 Cart: Managing the shopping cart and checkout process.
 
 ## Technical Overview
+
 The project utilizes several tools and technologies, including:
 
 Dummy JSON API: Used to simulate product data and interactions ( https://dummyjson.com/ ).
-SSG (Static-Side Generation), CSR (Client-Side Rendering) and SSG (Server-side Rendering) : Combining server-side rendering for initial page load and client-side rendering for dynamic updates and static-side Generation for  pre-builds web pages at compile time enabling faster website loading.
+SSG (Static-Side Generation), CSR (Client-Side Rendering) and SSG (Server-side Rendering) : Combining server-side rendering for initial page load and client-side rendering for dynamic updates and static-side Generation for pre-builds web pages at compile time enabling faster website loading.
 Design with DaisyUI and Tailwind CSS: Styling and UI components for a modern and responsive design.
 Next.js Framework: A popular React framework for building web applications with server-side rendering and routing.
 Local Storage: Used for storing cart information locally on the user's device.
 Firebase: For user authentication and data storage.
 SEO Implementation: Ensuring good search engine optimization practices are followed.
 
-
-
 ### For Developers and Contributors
+
 If you'd like to contribute to this project, please follow these steps:
 
 Fork the repository to your own GitHub account.
@@ -66,4 +64,3 @@ github: "https://github.com/Chanel50
 Bouchra Djalti
 linkedin: "https://github.com/Bushra369
 github: "https://www.linkedin.com/in/bushra-djalti-0b1b52287/
-
