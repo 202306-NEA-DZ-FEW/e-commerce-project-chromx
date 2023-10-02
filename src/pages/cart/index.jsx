@@ -3,6 +3,7 @@ import CartItemsList from "@/components/CartComponent/CartItemsList"
 import Container from "@/components/layouts/Container"
 import { auth, db } from "@/utils/firebase"
 import { collection, onSnapshot, query, where } from "firebase/firestore"
+import Head from "next/head"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
@@ -38,15 +39,24 @@ function CartPage() {
   }, [user, loading])
 
   return (
-    <main className="my-10 min-h-screen">
-      <Container>
-        <div className="flex flex-col gap-8">
-          {loading && <p>loading...</p>}
-          {cartItems && <CartItemsList cartItems={cartItems} user={user} />}
-          {cartItems.length ? <CartCheckoutCard subTotal={subTotal} /> : null}
-        </div>
-      </Container>
-    </main>
+    <>
+      <Head>
+        <title>Cart</title>
+        <meta
+          name="description"
+          content="see your cart items all in one place"
+        />
+      </Head>
+      <main className="my-10 min-h-screen">
+        <Container>
+          <div className="flex flex-col gap-8">
+            {loading && <p>loading...</p>}
+            {cartItems && <CartItemsList cartItems={cartItems} user={user} />}
+            {cartItems.length ? <CartCheckoutCard subTotal={subTotal} /> : null}
+          </div>
+        </Container>
+      </main>
+    </>
   )
 }
 

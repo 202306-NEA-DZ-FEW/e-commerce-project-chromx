@@ -4,7 +4,7 @@ import FiltersNav from "@/components/filters/FilterNav"
 import Search from "@/components/filters/Search"
 import Container from "@/components/layouts/Container"
 import { fetchAllProducts } from "@/utils/API"
-import Link from "next/link"
+import Head from "next/head"
 
 function Products({
   products,
@@ -22,26 +22,35 @@ function Products({
     ...(rating ? { rating } : {}),
   }
   return (
-    <Container>
-      <main className="grid lg:grid-cols-12 my-20">
-        <Search queryParams={queryParams} />
-        <div className="col-span-2">
-          <FiltersNav queryParams={queryParams} />
-        </div>
-        <section className="flex flex-wrap gap-4 items-center justify-center col-span-10 lg:max-h-[70vh] lg:overflow-y-scroll lg:no-scrollbar">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </section>
-        <div className="col-span-12 mt-8 mx-auto">
-          <Pagination
-            page={page}
-            totalPages={totalPages}
-            queryParams={queryParams}
-          />
-        </div>
-      </main>
-    </Container>
+    <>
+      <Head>
+        <title>All products</title>
+        <meta
+          name="description"
+          content="See all the products and filter by title, price or rating"
+        />
+      </Head>
+      <Container>
+        <main className="grid lg:grid-cols-12 my-20">
+          <Search queryParams={queryParams} />
+          <div className="col-span-2">
+            <FiltersNav queryParams={queryParams} />
+          </div>
+          <section className="flex flex-wrap gap-4 items-center justify-center col-span-10 lg:max-h-[70vh] lg:overflow-y-scroll lg:no-scrollbar">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </section>
+          <div className="col-span-12 mt-8 mx-auto">
+            <Pagination
+              page={page}
+              totalPages={totalPages}
+              queryParams={queryParams}
+            />
+          </div>
+        </main>
+      </Container>
+    </>
   )
 }
 
