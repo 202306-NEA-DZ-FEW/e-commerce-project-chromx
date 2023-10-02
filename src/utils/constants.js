@@ -9,6 +9,13 @@ import banner_8 from "public/images/banner_8.jpg"
 import banner_9 from "public/images/banner_9.jpg"
 import banner_10 from "public/images/banner_10.jpg"
 
+import zohir from "public/assets/avatars/zohir.png"
+import riadh from "public/assets/avatars/riadh.png"
+import darine from "public/assets/avatars/darine.png"
+import bouchra from "public/assets/avatars/bouchra.png"
+import imane from "public/assets/avatars/imane.png"
+import chanel from "public/assets/avatars/chanel.png"
+
 export const bannerData = [
   {
     id: 1,
@@ -118,3 +125,48 @@ export const electronicsSection = {
   lft: false,
   link: "/products?category=laptops",
 }
+
+export const teamMembers = [
+  {
+    id: 1,
+    imgUrl: riadh,
+    name: "Riadh Mouamnia",
+    linkedin: "https://www.linkedin.com/in/riadh-mouamnia/",
+    github: "https://github.com/riadhmouamnia",
+  },
+  {
+    id: 2,
+    imgUrl: darine,
+    name: "Darine Tag",
+    linkedin: "https://www.linkedin.com/in/darine-tag/",
+    github: "https://github.com/darinetag",
+  },
+  {
+    id: 3,
+    imgUrl: zohir,
+    name: "Zohir Kioukiou",
+    linkedin: "https://www.linkedin.com/in/zohir-kioukiou-130741229/",
+    github: "https://github.com/Zohir-kk",
+  },
+  {
+    id: 4,
+    imgUrl: imane,
+    name: "Imane Omari",
+    linkedin: "https://www.linkedin.com/in/iman-omari/",
+    github: "https://github.com/iman-om",
+  },
+  {
+    id: 5,
+    imgUrl: bouchra,
+    name: "Bouchra Djalti",
+    linkedin: "https://github.com/Bushra369",
+    github: "https://www.linkedin.com/in/bushra-djalti-0b1b52287/",
+  },
+  {
+    id: 6,
+    imgUrl: chanel,
+    name: "Chanel Hamel",
+    linkedin: "https://www.linkedin.com/in/chanel-hamel/",
+    github: "https://github.com/Chanel50",
+  },
+]
