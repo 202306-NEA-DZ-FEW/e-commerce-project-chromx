@@ -12,11 +12,13 @@ function ProductDetailsPage({ product, similarProducts, category }) {
         <meta name="description" content={product.description} />
       </Head>
       <Container>
-        <ProductDetails product={product} />
-        <SimilarProductsList
-          category={category}
-          similarProducts={similarProducts}
-        />
+        <div className="py-8">
+          <ProductDetails product={product} />
+          <SimilarProductsList
+            category={category}
+            similarProducts={similarProducts}
+          />
+        </div>
       </Container>
     </>
   )
@@ -25,7 +27,7 @@ function ProductDetailsPage({ product, similarProducts, category }) {
 export default ProductDetailsPage
 
 export async function getStaticPaths() {
-  const res = await fetch(BASE_URL)
+  const res = await fetch(`${BASE_URL}?limit=0&skip=0`)
   const data = await res.json()
 
   return {
@@ -36,13 +38,9 @@ export async function getStaticPaths() {
   }
 }
 
-//SSG
 export async function getStaticProps({ params }) {
   const product = await fetchProduct(params.productId)
-  if (!product) {
-    return { notFound: true }
-  }
-  const category = product.category || ""
+  const category = product.category
   const { products } = await fetchAllProducts(category)
   return {
     props: {

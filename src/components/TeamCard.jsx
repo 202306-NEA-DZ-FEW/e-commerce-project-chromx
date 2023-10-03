@@ -37,10 +37,10 @@ function TeamCard({ name, imgUrl, linkedin, github }) {
       >
         <h3 className="text-xl font-bold ">{name}</h3>
         <div className="flex items-center gap-3">
-          <Link href={linkedin} target="_blank">
+          <Link href={github} target="_blank">
             <BsGithub className="text-xl" />
           </Link>
-          <Link href={github} target="_blank">
+          <Link href={linkedin} target="_blank">
             <BsLinkedin className="text-xl" />
           </Link>
         </div>

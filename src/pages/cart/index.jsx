@@ -47,7 +47,7 @@ function CartPage() {
           content="see your cart items all in one place"
         />
       </Head>
-      <main className="my-10 min-h-screen">
+      <main className="my-10 min-h-screen py-20">
         <Container>
           <div className="flex flex-col gap-8">
             {loading && <p>loading...</p>}

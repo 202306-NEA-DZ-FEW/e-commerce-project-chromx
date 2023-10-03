@@ -7,6 +7,7 @@ import { collection, onSnapshot, query, where } from "firebase/firestore"
 import { FiMenu } from "react-icons/fi"
 import { GrClose } from "react-icons/gr"
 import { motion } from "framer-motion"
+import FormattedPrice from "./Products/FormattedPrice"
 
 function Navbar() {
   const [user, setUser] = useState(null)
@@ -122,7 +123,9 @@ function Navbar() {
                 <span className="font-bold text-lg">
                   {cartItems?.length} Items
                 </span>
-                <span className="text-info">Subtotal: {subTotal}</span>
+                <span className="text-info">
+                  Subtotal: <FormattedPrice amount={subTotal} />
+                </span>
                 <div className="card-actions">
                   <Link
                     // onClick={handleGoToCart}
